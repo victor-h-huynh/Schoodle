@@ -37,10 +37,21 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+// app.use("/api/events", usersRoutes(knex));
+// app.use("/api/timeslots", usersRoutes(knex));
+// app.use("/api/attendees", usersRoutes(knex));
 
-// Home page
+// Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/events/new", (req, res) => {
+  res.render("events_new");
+});
+
+app.get("/events/:id", (req, res) => {
+  res.render("events_id");
 });
 
 app.listen(PORT, () => {
