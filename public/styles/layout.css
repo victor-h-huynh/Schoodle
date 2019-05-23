@@ -1,7 +1,5 @@
-
 body {
-  background: #e9e9e9;
-  height: auto;
+  background-color: #EEE;
 }
 
 body h1 {
@@ -9,17 +7,19 @@ body h1 {
 }
 
 .nav {
-  background: linear-gradient(to left, rgb(172, 182, 229), rgb(134, 253, 232));
+  background: linear-gradient(to left, #acb6e5, #86fde8);
   border-bottom: solid 1px black;
   margin-bottom: 25px;
 }
+
 p {
   margin-bottom: 25px;
   margin-left: 2px;
 }
 
 button {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
+  /* Green */
   border: none;
   color: white;
   padding: 16px 32px;
@@ -29,7 +29,8 @@ button {
   font-size: 16px;
   margin-top: 10px;
   margin-bottom: 20px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 10px;
@@ -58,7 +59,6 @@ button:hover {
 header img {
   margin: 25px;
   margin-bottom: 10px;
-
   animation: float 2s ease-in-out infinite;
 }
 
@@ -82,7 +82,6 @@ header img {
   color: black;
   padding: 45px;
   box-sizing: content-box;
-
   border: solid black 2px;
   margin: 25px;
 }
@@ -102,6 +101,7 @@ header img {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
+
 .cell {
   color: white;
   font-size: 3rem;
@@ -110,39 +110,46 @@ header img {
   transition: 0.3s ease-in-out;
   border-radius: 15px;
 }
+
 .cell:hover {
   border-radius: 5px;
   -webkit-transform: scale(1.03);
   -ms-transform: scale(1.03);
   cursor: pointer;
 }
+
 .cell-1 {
   background: deepskyblue;
 }
+
 .cell-2 {
   background: orangered;
 }
+
 .cell-3 {
   background: royalblue;
 }
+
 .cell-4 {
   background: gold;
 }
+
 .cell-5 {
   background: blueviolet;
 }
+
 .cell-6 {
   background: limegreen;
 }
+
 .cell-7 {
   background: coral;
 }
+
 .cell-8 {
   background: lightseagreen;
 }
+
 .cell-9 {
   background: maroon;
 }
-
-
-
