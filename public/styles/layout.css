@@ -1,9 +1,5 @@
 body {
-<<<<<<< HEAD
   background-color: #eee;
-=======
-  background-color: #EEE;
->>>>>>> b3c971625d2b8642a7357969f8a4d920bee3b59e
 }
 body h1 {
   color: #244751;
@@ -13,17 +9,12 @@ body h1 {
   border-bottom: solid 1px black;
   margin-bottom: 25px;
 }
-
 p {
   margin-bottom: 25px;
   margin-left: 2px;
 }
 button {
   background-color: #4caf50;
-<<<<<<< HEAD
-=======
-  /* Green */
->>>>>>> b3c971625d2b8642a7357969f8a4d920bee3b59e
   border: none;
   color: white;
   padding: 16px 32px;
@@ -34,10 +25,6 @@ button {
   margin-top: 10px;
   margin-bottom: 20px;
   -webkit-transition-duration: 0.4s;
-<<<<<<< HEAD
-=======
-  /* Safari */
->>>>>>> b3c971625d2b8642a7357969f8a4d920bee3b59e
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 10px;
@@ -89,16 +76,13 @@ header img {
 
 .btn-edit1 {
   position: absolute;
-  margin-top: 10rem;
+  margin-top: 8.8rem;
+  margin-left: 2.2rem;
 }
 
-.btn-edit2 {
+.btn-success {
   position: absolute;
-  margin-top: 22.5rem;
-}
-
-.btn-edit3 {
-  position: absolute;
+  margin-left: 10rem;
   margin-top: 35rem;
 }
 .container {
@@ -115,18 +99,14 @@ header img {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-<<<<<<< HEAD
 .container3 {
-  width: 5rem;
+  width: 3rem;
   height: auto;
-  margin: 5rem;
+  margin: 4rem 0 4rem 8rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-=======
->>>>>>> b3c971625d2b8642a7357969f8a4d920bee3b59e
-
 .cell {
   color: white;
   font-size: 3rem;
@@ -134,47 +114,57 @@ header img {
   padding: 4rem;
   transition: 0.3s ease-in-out;
   border-radius: 15px;
+  width: 3rem;
+  height: 3rem;
 }
-
 .cell:hover {
   border-radius: 5px;
   -webkit-transform: scale(1.03);
   -ms-transform: scale(1.03);
   cursor: pointer;
 }
-
 .cell-1 {
   background: deepskyblue;
 }
-
 .cell-2 {
   background: orangered;
 }
-
 .cell-3 {
   background: royalblue;
 }
-
 .cell-4 {
   background: gold;
 }
-
 .cell-5 {
   background: blueviolet;
 }
-
 .cell-6 {
   background: limegreen;
 }
-
 .cell-7 {
   background: coral;
 }
-
 .cell-8 {
   background: lightseagreen;
 }
-
 .cell-9 {
   background: maroon;
+}
+
+#inlineCheckbox1 {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  height: 3rem;
+  /* margin: auto; */
+}
+
+#table {
+  position: relative;
+  width: 5rem;
+  margin-left: 10rem;
+}
+
+.table-height {
+  font-size: 2rem;
 }

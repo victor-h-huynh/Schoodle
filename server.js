@@ -56,6 +56,7 @@ app.get("/events/new", (req, res) => {
 
 app.get("/events/results", (req, res) => {
   res.render("events_results")
+  
 })
 
 app.listen(PORT, () => {
