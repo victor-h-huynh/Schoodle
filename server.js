@@ -50,10 +50,6 @@ function generateRandomString() {
   return randomize;
 }
 
-// $("form").on("submit", function(event) {
-//     event.preventDefault();
-// })
-
 
 // Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
@@ -64,14 +60,34 @@ app.get("/events/new", (req, res) => {
   res.render("events_new");
 });
 
-// app.get("/events/:id", (req, res) => {
-//   res.render("events_id");
-// });
+// Save new event and redirect to event poll page
+app.post("/events/new", (req, res) => {
+  // Add new URL and form entries to "event" DB table & "timeslot" DB table
+  // Redirect to event page "/events/:url"
+  let shortURL = generateRandomString();
+  //input parameters 
+  let name = req.body.name;
+  let email = req.body.email;
+  let event = req.body.event;
+  let description = req.body.description;
+
+  knex('users')
+  .insert({name, email})
+  .returning('id')
+  .then(([id]) => {
+    knex('events')
+    .insert({ title: event, description, url: shortURL, user_id:id})
+    .then(result => console.log(result))
+  });
+  
+
+  res.redirect(`http://localhost:8080/events/${shortURL}`);
+});
 
 app.get("/events/results", (req, res) => {
   res.render("events_results")
   
-})
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
