@@ -41,18 +41,84 @@ app.use("/api/users", usersRoutes(knex));
 // app.use("/api/timeslots", usersRoutes(knex));
 // app.use("/api/attendees", usersRoutes(knex));
 
-// Home page - redirects (create button) to /events/new
+//Function to generate URL ID
+const generateRandomString = function() {
+
+  return Math.floor((1 + Math.random()) * 0x10000000000).toString(16).substring(1);
+
+}
+
+// Homepage - contains "create button" that redirects to "/events/new" endpoint
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+
+// Event form - enter event info & timeslots
 app.get("/events/new", (req, res) => {
-  res.render("events_new");
+
+
+  // remove this from here, when have access to vic's new page
+  let templateVars = { user:
+    knex
+    .select('user[0].name')
+    .from('users')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    .finally(() => knex.destroy())
+  };
+  
+  console.log(templateVars);
+
+  res.render("events_new", templateVars);
 });
 
-app.get("/events/:id", (req, res) => {
-  res.render("events_id");
+
+// Save new event and redirect to event poll page
+app.post("/events", (req, res) => {
+  
+  // Generate new URL
+  // Add new URL and form entries to "event" DB table & "timeslot" DB table
+  // Redirect to event page "/events/:url"
+
+  res.redirect("/events/:url"); //redirect to the newly created URL
+
 });
+
+
+// Event page - contains poll table with "save" and "edit" buttons
+app.get("/events/:url", (req, res) => {
+
+  // Display new URL as "share" link
+  // Populate events table:
+    // Add event info from "events" table
+    // Add timeslot info from "timeslot" table
+    // Check if any votes, if yes add to page
+  // Display the editable "vote" row & "edit" button next to each vote
+
+  res.render("events_id"); // update with Victor's ejs page name
+});
+
+
+// Save button actions - allows user to save new vote
+app.post("/events/:url", (req, res) => {
+
+  // Save new vote entry to:
+    // Votes table
+    // Users table
+  // Redirect to same page (reload)
+
+});
+
+
+// Edit button actions - allows user to edit existing vote
+app.post("/users/:userid/events/:url", (req, res) => {
+
+  // Update votes table (in DB) with new availabilities
+  // Redirect to same page (reload)
+
+});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
