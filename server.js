@@ -50,9 +50,9 @@ function generateRandomString() {
   return randomize;
 }
 
-$("form").on("submit", function(event) {
-    event.preventDefault();
-}
+// $("form").on("submit", function(event) {
+//     event.preventDefault();
+// })
 
 
 // Home page - redirects (create button) to /events/new
@@ -64,9 +64,14 @@ app.get("/events/new", (req, res) => {
   res.render("events_new");
 });
 
-app.get("/events/:id", (req, res) => {
-  res.render("events_id");
-});
+// app.get("/events/:id", (req, res) => {
+//   res.render("events_id");
+// });
+
+app.get("/events/results", (req, res) => {
+  res.render("events_results")
+  
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
