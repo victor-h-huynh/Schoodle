@@ -74,16 +74,14 @@ header img {
   margin: 25px;
 }
 
-.btn-edit1 {
-  position: absolute;
-  margin-top: 8.8rem;
-  margin-left: 2.2rem;
-}
-
 .btn-success {
   position: absolute;
   margin-left: 10rem;
   margin-top: 35rem;
+}
+
+.btn-success2 {
+  position: absolute;
 }
 .container {
   height: 90vh;
@@ -156,7 +154,6 @@ header img {
   justify-content: center;
   width: 10rem;
   height: 3rem;
-  /* margin: auto; */
 }
 
 #table {
