@@ -41,6 +41,20 @@ app.use("/api/users", usersRoutes(knex));
 // app.use("/api/timeslots", usersRoutes(knex));
 // app.use("/api/attendees", usersRoutes(knex));
 
+//String randomizing function
+
+function generateRandomString() {
+  let randomize = Math.random()
+    .toString(36)
+    .substring(7);
+  return randomize;
+}
+
+$("form").on("submit", function(event) {
+    event.preventDefault();
+}
+
+
 // Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
   res.render("index");
