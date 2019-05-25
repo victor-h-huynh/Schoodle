@@ -27,16 +27,11 @@
         <h1>Enter your info</h1>
         <form action="/events/new" method="POST">
           <textarea name="name" placeholder="Name"></textarea>
+          <textarea name="email" placeholder="Email"></textarea>
+          <h3>Event info</h3>
+          <textarea name="event" placeholder="Event title"></textarea>
           <textarea name="description" placeholder="Description"></textarea>
-          <textarea name="event" placeholder="Event"></textarea>
-          <h3>Availabilities</h3>
-          <select>
-              <option>12pm</option>
-              <option>1pm</option>
-              <option>2pm</option>
-              <option>3pm</option>
-              <option>4pm</option>
-            </select>
+          <h3>Times</h3>
             <br>
             <button type="submit" class="eventform">Submit</button>
           </form>
