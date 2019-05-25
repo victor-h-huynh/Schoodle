@@ -72,21 +72,30 @@ app.post("/events/new", (req, res) => {
   let email = req.body.email;
   let event = req.body.event;
   let description = req.body.description;
-  // let timeslot1 = req.body.timeslot1;
-  // let timeslot2 = req.body.timeslot2;
-  // let timeslot3 = req.body.timeslot3;
+  let timeslot1 = req.body.timeslot1;
+  let timeslot2 = req.body.timeslot2;
+  let timeslot3 = req.body.timeslot3;
 
+  console.log(timeslot1);
 
   knex("users")
     .insert({ name, email })
     .returning("id")
-    .then(([id]) => {
+    .then((bunchOfIds) => {
       knex("events")
-        .insert({ title: event, description, url: shortURL, user_id: id })
-        .then(result => console.log(result));
-          // knex("events")
-          // .insert({ title: event, description, url: shortURL, user_id: id })
-          // .then(result => console.log(result));
+        .insert({ title: event, description, url: shortURL, user_id: bunchOfIds[0] })
+        .returning("id")
+        .then(eventIds => {
+          knex("timeslots")
+          .insert({ timeslot: timeslot1, event_id: eventIds[0] })
+          .then(result => console.log(result));
+          knex("timeslots")
+          .insert({ timeslot: timeslot2, event_id: eventIds[0] })
+          .then(result => console.log(result));
+          knex("timeslots")
+          .insert({ timeslot: timeslot3, event_id: eventIds[0] })
+          .then(result => console.log(result));
+        });
     });
 
   res.redirect(`http://localhost:8080/events/${shortURL}`);
