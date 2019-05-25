@@ -86,13 +86,8 @@ header img {
 }
 
 .btn-success {
-  position: absolute;
-  margin-left: 10rem;
-  margin-top: 35rem;
-}
-
-.btn-success2 {
-  position: absolute;
+  position: relative;
+  margin-left: 20rem;
 }
 .container {
   height: 90vh;
@@ -160,6 +155,23 @@ header img {
   background: maroon;
 }
 
+#day-table-text {
+  margin-left: 0.2rem;
+  width: 10rem;
+}
+
+.form-check-input {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  height: 3rem;
+
+}
+
+#inlineFormInputName2 {
+  width: 15rem;
+}
+
 #inlineCheckbox1 {
   display: flex;
   justify-content: center;
@@ -169,6 +181,7 @@ header img {
 
 .input-group-text {
   text-align: left;
+  width: 15rem;
 }
 
 #table {
@@ -179,4 +192,8 @@ header img {
 
 .table-height {
   font-size: 2rem;
+}
+
+#textAreaShortURL {
+  width: 10rem;
 }
