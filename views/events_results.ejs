@@ -10,17 +10,18 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
     <header>
       <div class="nav">
-        <a href="/"><img
+        <img
           src="/schoodlelogo2.png"
           alt="schoodle"
           width="230px"
           height="80px"
-          ></a>
+        />
       </div>
     </header>
 
@@ -98,17 +99,13 @@
       
       </form>
 
-      <button type="button" class="btn btn-success btn-lg" value="submit">Update Page</button>
-      <textarea name="shareURL" id="myInput"><%= shareURL %></textarea>
-      <table class="table table-striped table-bordered table-hover" id=table>
-        <tr class="table-row">
-          <th class="table-height">Dates</th>
-          <th class="table-height">Monday 9AM</th>
-          <th class="table-height">Tuesday 10AM</th>
-          <th class="table-height">Wednesday 11AM</th>
-          <th class="table-height">Thursday 3PM</th>
-          <th class="table-height">Friday 6PM</th>
-        </tr>
+      <form class="form-inline">
+
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><h6>VICTOR<br>VICTOR1993@GMAIL.COM<br></h6></div>
+            </div>
+          </div>
         
           <div class="form-check mb-2 mr-sm-2">
             <input class="form-check-input" type="checkbox" id="inlineFormCheck">
