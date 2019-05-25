@@ -59,12 +59,17 @@ header img {
   margin-bottom: 10px;
   animation: float 2s ease-in-out infinite;
 }
+header img:hover {
+
+  animation: float 0.25s ease-in-out infinite;
+}
 
 .block1 {
   height: auto;
   background: red;
   color: white;
   padding: 25px;
+  text-align: center;
 }
 
 .block2 {
@@ -82,6 +87,7 @@ header img {
   box-sizing: content-box;
   border: solid black 2px;
   margin: 25px;
+  border-radius: 10px;
 }
 
 .container {
