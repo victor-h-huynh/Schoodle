@@ -10,19 +10,22 @@ exports.seed = function(knex, Promise) {
           title: "Lighthouse Reunion",
           description:
             "2019 LHL cohort reunites to share first year experiences!",
-          url: "488b034b9f"
+          url: "488b034b9f",
+          user_id: 2
         }),
         knex("events").insert({
           id: 2,
           title: "5-a-7 NDG Crew",
           description: "Neighbourhood crew catch-up",
-          url: "15e795526e"
+          url: "15e795526e",
+          user_id: 2
         }),
         knex("events").insert({
           id: 3,
           title: "Girls' Brunch!",
           description: "McGill ladies finally meet up!",
-          url: "7f921cfb4e"
+          url: "7f921cfb4e",
+          user_id: 2
         })
       ]);
     });

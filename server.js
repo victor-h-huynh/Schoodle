@@ -101,10 +101,36 @@ app.post("/events/new", (req, res) => {
   res.redirect(`http://localhost:8080/events/${shortURL}`);
 });
 
-app.get("/events/:id", (req, res) => {
-  let eventURL = { shareURL: req.params.id };
 
-  res.render("events_results", eventURL);
+// Event form - enter event info & timeslots
+app.get("/events/:id", (req, res) => {
+  let templateVars;
+  knex
+  .select('*')
+  .from('votes')
+  .innerJoin('users', 'votes.user_id', 'users.id')
+  .innerJoin('timeslots', 'votes.timeslot_id', 'timeslots.id')
+  .innerJoin('events', 'timeslots.event_id', 'events.id')
+  .orderBy('timeslots.id')
+  .then(result => {
+    console.log(result)
+    templateVars = {
+      shareURL: req.params.id,
+      eventTitle: result[0].title,
+      eventDescription: result[0].description,
+      timeslot_1: result[0].timeslot,
+      timeslot_2: result[1].timeslot,
+      timeslot_3: result[2].timeslot,
+      user_1: result[0].name,
+      user_2: result[1].name,
+      user_3: result[2].name
+    }
+
+    res.render("events_results", templateVars);
+
+  }).catch(err => console.log(err))
+  .finally(() => knex.destroy())
+
 });
 
 app.get("/u/:shortURL", (req, res) => {
