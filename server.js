@@ -72,15 +72,19 @@ app.post("/events/new", (req, res) => {
   let email = req.body.email;
   let event = req.body.event;
   let description = req.body.description;
+<<<<<<< HEAD
   let timeslot1 = req.body.timeslot1;
   let timeslot2 = req.body.timeslot2;
   let timeslot3 = req.body.timeslot3;
 
   console.log(timeslot1);
+=======
+>>>>>>> features/events_results_2
 
   knex("users")
     .insert({ name, email })
     .returning("id")
+<<<<<<< HEAD
     .then((bunchOfIds) => {
       knex("events")
         .insert({ title: event, description, url: shortURL, user_id: bunchOfIds[0] })
@@ -96,11 +100,18 @@ app.post("/events/new", (req, res) => {
           .insert({ timeslot: timeslot3, event_id: eventIds[0] })
           .then(result => console.log(result));
         });
+=======
+    .then(([id]) => {
+      knex("events")
+        .insert({ title: event, description, url: shortURL, user_id: id })
+        .then(result => console.log(result));
+>>>>>>> features/events_results_2
     });
 
   res.redirect(`http://localhost:8080/events/${shortURL}`);
 });
 
+<<<<<<< HEAD
 app.get("/events/:id", (req, res) => {
   let eventURL = { shareURL: req.params.id };
 
@@ -108,6 +119,27 @@ app.get("/events/:id", (req, res) => {
 });
 
 app.get("/u/:shortURL", (req, res) => {
+=======
+app.get(`/events/:id`, (req, res) => {
+  
+  let eventURL = { shareURL: req.params}
+
+  // let body = req.body;
+  // console.log(body);
+  // let share = req.body.shareURL;
+  //   shortURL = req.body.eventURL;
+  //   res.render("events_results", );
+  // }
+  
+  // else {
+  //   res.send("Error");
+  // }
+  res.render("events_results", eventURL);
+});
+
+app.get("/u/:shortURL", (req, res) => {
+  
+>>>>>>> features/events_results_2
   res.render("events_results");
 });
 
