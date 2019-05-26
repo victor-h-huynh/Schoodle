@@ -12,6 +12,11 @@ module.exports = {
       port     : process.env.DB_PORT,
       ssl      : process.env.DB_SSL
     },
+    pool: {
+      min: 1,
+      max: 1000
+    },
+    
     migrations: {
       directory: './db/migrations',
       tableName: 'migrations'
@@ -25,8 +30,8 @@ module.exports = {
     client: 'postgresql',
     connection: process.env.DATABASE_URL + '?ssl=true',
     pool: {
-      min: 2,
-      max: 10
+      min: 1,
+      max: 1000
     },
     migrations: {
       tableName: 'migrations'

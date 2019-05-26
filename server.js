@@ -108,7 +108,8 @@ app.get("/events/:id", (req, res) => {
   .innerJoin('users', 'votes.user_id', 'users.id')
   .innerJoin('timeslots', 'votes.timeslot_id', 'timeslots.id')
   .innerJoin('events', 'timeslots.event_id', 'events.id')
-  .orderBy('timeslots.id')
+  // .orderBy('timeslots.id')
+  .orderBy('name')
   .then(result => {
     console.log(result)
     const templateVars = {
@@ -131,25 +132,36 @@ app.get("/u/:shortURL", (req, res) => {
 
 
 // Save button actions - allows user to save new vote
-app.post("/events/2sn5th", (req, res) => {
+app.post("/events/:shareURL", (req, res) => {
 
   // Save new vote entry to: (a) Users table, (b) Votes table
   // Redirect to same page (reload)
 
   // let shareURL = req.params.shareURL;
-  let shareURL = '2sn5th';
-  let name = req.body.name;
-  let email = req.body.email;
-  let time = (knex('events')
-  .select('id')
-  .innerJoin('timeslots', 'id', 'event_id')
-  .where('url', shareURL))
+  let shareURL = req.params.shareURL;
+  let name1 = req.body.name1;
+  let email1 = req.body.email1;
+  // let time = (knex('events')
+  // .select('id')
+  // .innerJoin('timeslots', 'id', 'event_id')
+  // .where('url', shareURL))
 
-  console.log(`PRINT TIME HERE ${time}`);
+  // console.log(`PRINT TIME HERE ${time}`);
 
   knex("users")
-    .insert({ name, email })
+    .insert({ name: 'name1', email: 'email1'})
+    .returning("id")
+    .then(([id]) =>
+      result =>{
+        console.log('hello')
+        res.redirect(`http://localhost:8080/events/${shareURL}`)})
 
+
+     // knex("events")
+     // .insert({ title: event, description, url: shortURL, user_id: id })
+     // .then(result => console.log(result));
+
+    
   // knex("users")
   // .insert({ name, email })
   // .returning("id")
@@ -166,7 +178,6 @@ app.post("/events/2sn5th", (req, res) => {
   //     .then(result => console.log(result));
   //   })
 
-  res.redirect(`http://localhost:8080/events/${shareURL}`);
 
 });
 

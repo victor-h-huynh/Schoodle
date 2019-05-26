@@ -13,3 +13,4 @@ exports.down = function(knex, Promise) {
       table.dropColumnn('user_id');
   })
 };
+ 
