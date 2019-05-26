@@ -64,6 +64,7 @@ header img {
   background: red;
   color: white;
   padding: 25px;
+  text-align: center;
 }
 .block2 {
   height: auto;
@@ -79,6 +80,10 @@ header img {
   box-sizing: content-box;
   // border: solid black 2px;
   margin: 25px;
+}
+
+#table {
+  margin: auto;
 }
 
 .btn-success {
@@ -123,6 +128,7 @@ header img {
   width: 3rem;
   height: 3rem;
 }
+
 .cell:hover {
   border-radius: 5px;
   -webkit-transform: scale(1.03);
@@ -182,12 +188,16 @@ header img {
   justify-content: center;
   align-items: center;
   margin: 2em;
+  margin-left: 0px;
   padding: 2em;
   border: 1px solid grey;
   border-radius: 5px;
+  height: auto;
+  height: 100px;
+  width: 500px;
 }
 
 #myInput {
-  padding: 2em;
-  margin: 2em 1em 2em;
+  padding: 10px;
+  margin: 2em;
 }

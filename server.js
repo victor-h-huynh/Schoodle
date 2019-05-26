@@ -53,7 +53,6 @@ function generateRandomString() {
   return randomize;
 }
 
-
 // Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
   
