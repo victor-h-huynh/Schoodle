@@ -103,7 +103,10 @@ app.post("/events/new", (req, res) => {
 
 app.get("/events/:id", (req, res) => {
   let eventURL = { shareURL: req.params.id };
-
+  // let timeslots = { 
+  //   column1: req.body.timeslot1,
+  // }
+  
   res.render("events_results", eventURL);
 });
 
