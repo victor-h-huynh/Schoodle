@@ -53,14 +53,28 @@ function generateRandomString() {
   return randomize;
 }
 
+
 // Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
-  res.render("index");
+  
+
+    res.render("index");
+  
+});
+
+app.get("/events", (req, res) => {
+  
+  res.render("index")
+
 });
 
 app.get("/events/new", (req, res) => {
-  res.render("events_new");
+  
+  res.render("events_new")
+
 });
+
+
 
 // Save new event and redirect to event poll page
 app.post("/events/new", (req, res) => {
@@ -124,10 +138,6 @@ app.get("/events/:id", (req, res) => {
   }).catch(err => console.log(err))
   .finally(() => knex.destroy())
 
-});
-
-app.get("/u/:shortURL", (req, res) => {
-  res.render("events_results");
 });
 
 
