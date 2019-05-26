@@ -104,6 +104,7 @@ app.post("/events/new", (req, res) => {
 app.get("/events/:id", (req, res) => {
   let templateVars;
   knex('votes')
+  .select('votes.id as voteid', 'name', 'email', 'timeslot', 'title', 'description')
   .innerJoin('users', 'votes.user_id', 'users.id')
   .innerJoin('timeslots', 'votes.timeslot_id', 'timeslots.id')
   .innerJoin('events', 'timeslots.event_id', 'events.id')
@@ -114,9 +115,6 @@ app.get("/events/:id", (req, res) => {
       shareURL: req.params.id,
       eventTitle: result[0].title,
       eventDescription: result[0].description,
-      // timeslot_1: result[0].timeslot,
-      // timeslot_2: result[1].timeslot,
-      // timeslot_3: result[2].timeslot,
       result: result
     };
 
