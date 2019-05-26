@@ -32,61 +32,72 @@
       <h5>
         <%= eventDescription %>
       </h5>
-      
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            
+      <div id="shareBox">
+        <h6>Share event with guests: </h6>
+        <textarea name="shareURL" id="myInput">http://localhost:8080/events/<%= shareURL %></textarea>
+        <h6>↪️</h6>
+      </div>
       
       <div class="container3">
+        <table class="table table-striped table-bordered table-hover" id=table>
+          <tr class="table-row">
+            <th class="table-height">Dates</th>
+            <% for(let option of result){ %>
+              <!-- <% let id1 = result.id; %> -->
+              <td><h6><%= option.timeslot %></h6></td>
+            </tr>
+            <% } %>
+            <!-- <% for(let key of result){ %>
+              <% let id2 = result.id; %>
+              <tr>
+                <td><h6><%= key.name %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
+                <% if (id2) { %>
+                  <td>"CHECK"</td>
+                  <% } else { %>
+                  <td>"EMPTY"</td>
+                    <% } %>
+              </tr>
+              <% } %> -->
 
+                  
+                  
+                  
+                  
+                <!-- <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
+                <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
+                <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td> -->
 
+            <!-- <form method="POST" action="/events/<%= shareURL %>"> -->
+          <form action="/events/2sn5th" method="POST">
+            <tr>
+              <td>
+                <textarea class="textAreaTable" name="name" id="" cols="7" rows="2" placeholder="Name:"></textarea>
+                <textarea class="textAreaTable" name="email" id="" cols="7" rows="2" placeholder="Email:"></textarea>
+              </td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
+              <td><button type="button" class="btn-success-btn-lg" value="submit">Save</button></td>
+            </tr>
+          </form>
 
-      <button type="button" class="btn btn-success btn-lg" value="submit">Update Page</button>
-      <textarea name="shareURL" id="myInput"><%= shareURL %></textarea>
-      <table class="table table-striped table-bordered table-hover" id=table>
-        <tr class="table-row">
-          <th class="table-height">Dates</th>
-          <th class="table-height"><%= timeslot_1 %></th>
-          <th class="table-height"><%= timeslot_2 %></th>
-          <th class="table-height"><%= timeslot_3 %></th>
-        </tr>
-        
-        <% for(let key in users){ %>
-          <li> <b><%= key %></b> ➡️ <%= urls[key].longURL %>
-            <form method="POST" action="/urls/<%= key %>/delete"><a href="/urls/<%= key %>">Edit </a><button type="submit">Delete 🗑️</button> </form>
-          </li>
-        <% } %>
+          <!-- <form>
+            <td><textarea class="textAreaTable" name="name" id="" cols="7" rows="2" placeholder="Name:"></textarea></td>
+            <td><textarea class="textAreaTable" name="email" id="" cols="7" rows="2" placeholder="Email:"></textarea></td>
+            <button type="button" class="btn btn-success btn-lg" value="submit">Save</button>
+          </form> -->
 
-
-        <tr>
-          <td><h6><%= user_1 %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-        </tr>
-
-        <tr>
-          <td><h6><%= user_2 %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-        </tr>
-
-        <tr>
-          <td><h6><%= user_3 %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked></td>
-        </tr>
-
-        <tr>
-          <td><textarea class="textAreaTable" name="textarea" id="" cols="7" rows="2" placeholder="Name:"></textarea></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
-          <td><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"></td>
-        </tr>
-
-
-      </table>
-
+          <!-- <form method="POST" action="/events/<%= shareURL %>">
+            <td><textarea class="textAreaTable" name="name" id="" cols="7" rows="2" placeholder="Name:"></textarea></td>
+            <td><textarea class="textAreaTable" name="email" id="" cols="7" rows="2" placeholder="Name:"></textarea></td>
+            <button type="button" class="btn btn-success btn-lg" value="submit">Save</button>
+          </form> -->
+          
+        </table>
     </div>
 
 

@@ -76,8 +76,6 @@ app.post("/events/new", (req, res) => {
   let timeslot2 = req.body.timeslot2;
   let timeslot3 = req.body.timeslot3;
 
-  console.log(timeslot1);
-
   knex("users")
     .insert({ name, email })
     .returning("id")
@@ -105,26 +103,22 @@ app.post("/events/new", (req, res) => {
 // Event form - enter event info & timeslots
 app.get("/events/:id", (req, res) => {
   let templateVars;
-  knex
-  .select('*')
-  .from('votes')
+  knex('votes')
   .innerJoin('users', 'votes.user_id', 'users.id')
   .innerJoin('timeslots', 'votes.timeslot_id', 'timeslots.id')
   .innerJoin('events', 'timeslots.event_id', 'events.id')
   .orderBy('timeslots.id')
   .then(result => {
     console.log(result)
-    templateVars = {
+    const templateVars = {
       shareURL: req.params.id,
       eventTitle: result[0].title,
       eventDescription: result[0].description,
-      timeslot_1: result[0].timeslot,
-      timeslot_2: result[1].timeslot,
-      timeslot_3: result[2].timeslot,
-      user_1: result[0].name,
-      user_2: result[1].name,
-      user_3: result[2].name
-    }
+      // timeslot_1: result[0].timeslot,
+      // timeslot_2: result[1].timeslot,
+      // timeslot_3: result[2].timeslot,
+      result: result
+    };
 
     res.render("events_results", templateVars);
 
@@ -136,6 +130,56 @@ app.get("/events/:id", (req, res) => {
 app.get("/u/:shortURL", (req, res) => {
   res.render("events_results");
 });
+
+
+// Save button actions - allows user to save new vote
+app.post("/events/2sn5th", (req, res) => {
+
+  // Save new vote entry to: (a) Users table, (b) Votes table
+  // Redirect to same page (reload)
+
+  // let shareURL = req.params.shareURL;
+  let shareURL = '2sn5th';
+  let name = req.body.name;
+  let email = req.body.email;
+  let time = (knex('events')
+  .select('id')
+  .innerJoin('timeslots', 'id', 'event_id')
+  .where('url', shareURL))
+
+  console.log(`PRINT TIME HERE ${time}`);
+
+  knex("users")
+    .insert({ name, email })
+
+  // knex("users")
+  // .insert({ name, email })
+  // .returning("id")
+  // .then((bunchOfIds) => {
+  //   knex("votes")
+  //     .insert({
+  //       user_id: bunchOfIds[0],
+  //       timeslot_id: time
+  //         // (knex('events')
+  //         //   .select('id')
+  //         //   .innerJoin('timeslots', 'id', 'event_id')
+  //         //   .where('url', 'shareURL'))
+  //     })
+  //     .then(result => console.log(result));
+  //   })
+
+  res.redirect(`http://localhost:8080/events/${shareURL}`);
+
+});
+
+
+// Edit button actions - allows user to edit existing vote
+// app.post("/users/:userid/events/:url", (req, res) => {
+
+//   // Update votes table (in DB) with new availabilities
+//   // Redirect to same page (reload)
+
+// });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
