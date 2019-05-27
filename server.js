@@ -113,6 +113,7 @@ app.get("/events/:shareURL", (req, res) => {
     .fullOuterJoin('users', 'votes.user_id', 'users.id')
     .innerJoin('events', 'timeslots.event_id', 'events.id')
     .where('events.url', req.params.shareURL)
+    .orderBy('timeslots')
   .then(result => {
     console.log(result)
 

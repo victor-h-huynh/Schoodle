@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex("events").insert({
           id: 2,
-          title: "5-a-7 NDG Crew",
+          title: "5-a-7 NDG Friends",
           description: "Neighbourhood crew catch-up",
           url: "15e795526e",
           user_id: 2
