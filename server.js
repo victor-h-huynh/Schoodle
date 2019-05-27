@@ -89,6 +89,10 @@ app.post("/events/new", (req, res) => {
   let timeslot2 = req.body.timeslot2;
   let timeslot3 = req.body.timeslot3;
 
+  // if (timeslot1 == '' && timeslot2 == '' && timeslot3 == '') {
+    
+  // }
+  // else {
   knex("users")
     .insert({ name, email })
     .returning("id")
@@ -97,6 +101,7 @@ app.post("/events/new", (req, res) => {
         .insert({ title: event, description, url: shortURL, user_id: bunchOfIds[0] })
         .returning("id")
         .then(eventIds => {
+
           knex("timeslots")
           .insert({ timeslot: timeslot1, event_id: eventIds[0] })
           .then(result => console.log(result));
@@ -110,6 +115,7 @@ app.post("/events/new", (req, res) => {
     });
 
   res.redirect(`http://localhost:8080/events/${shortURL}`);
+  // }
 });
 
 
@@ -121,7 +127,6 @@ app.get("/events/:id", (req, res) => {
   .innerJoin('users', 'votes.user_id', 'users.id')
   .innerJoin('timeslots', 'votes.timeslot_id', 'timeslots.id')
   .innerJoin('events', 'timeslots.event_id', 'events.id')
-  // .orderBy('timeslots.id')
   .orderBy('name')
   .then(result => {
     console.log(result)
