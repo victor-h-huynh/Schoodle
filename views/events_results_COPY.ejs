@@ -40,31 +40,30 @@
       </div>
       
       <div class="container3">
-          <table class="table table-striped table-bordered table-hover" id=table>
-            <tr class="table-row">
-              <th><h6>Dates</h6></th>
-              <% for(let option of result){ %>
-                <td><h6><%= option.timeslot %></h6></td>
-              <% } %>
-            </tr>
-              <% if (result[0].name !== null) { %>
-                <% for(let key of result){ %>
-                  <% let voteid1 = key.voteid; %>
-                  <tr>
-                    <td><h6><%= key.name %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
-                    <% for(let option of result){ %>
-                      <% let voteid2 = option.voteid; %>
-                      <% console.log(`id1 = ${voteid1}, id2 = ${voteid2}`) %>
-                      <% if (voteid1 === voteid2) { %>
-                        <td>✅</td>
-                        <% } else { %>
-                        <td></td>
-                      <% } %>
+        <table class="table table-striped table-bordered table-hover" id=table>
+          <tr class="table-row">
+            <th><h6>Dates</h6></th>
+            <% for(let option of result){ %>
+              <td><h6><%= option.timeslot %></h6></td>
+            <% } %>
+          </tr>
+            <% if (result[0].name !== null) { %>
+              <% for(let key of result){ %>
+                <% let voteid1 = key.voteid; %>
+                <tr>
+                  <td><h6><%= key.name %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
+                  <% for(let option of result){ %>
+                    <% let voteid2 = option.voteid; %>
+                    <% console.log(`id1 = ${voteid1}, id2 = ${voteid2}`) %>
+                    <% if (voteid1 === voteid2) { %>
+                      <td>✅</td>
+                      <% } else { %>
+                      <td></td>
                     <% } %>
-                  </tr>
-                <% } %>
+                  <% } %>
+                </tr>
               <% } %>
-
+            <% } %>
                 
                 
                   
