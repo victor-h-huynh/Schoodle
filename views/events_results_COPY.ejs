@@ -10,25 +10,22 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
   </head>
 
   <body>
     <header>
       <div class="nav">
-        <img
+        <a href="/"><img
           src="/schoodlelogo2.png"
           alt="schoodle"
           width="230px"
           height="80px"
-        />
+          ></a>
       </div>
     </header>
 
     <section class="block3">
       <h1>
-
-
         <%= eventTitle %>
       </h1>
       
@@ -43,31 +40,30 @@
       </div>
       
       <div class="container3">
-          <table class="table table-striped table-bordered table-hover" id=table>
-            <tr class="table-row">
-              <th><h6>Dates</h6></th>
-              <% for(let option of result){ %>
-                <td><h6><%= option.timeslot %></h6></td>
-              <% } %>
-            </tr>
-              <% if (result[0].name !== null) { %>
-                <% for(let key of result){ %>
-                  <% let voteid1 = key.voteid; %>
-                  <tr>
-                    <td><h6><%= key.name %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
-                    <% for(let option of result){ %>
-                      <% let voteid2 = option.voteid; %>
-                      <% console.log(`id1 = ${voteid1}, id2 = ${voteid2}`) %>
-                      <% if (voteid1 === voteid2) { %>
-                        <td>✅</td>
-                        <% } else { %>
-                        <td></td>
-                      <% } %>
+        <table class="table table-striped table-bordered table-hover" id=table>
+          <tr class="table-row">
+            <th><h6>Dates</h6></th>
+            <% for(let option of result){ %>
+              <td><h6><%= option.timeslot %></h6></td>
+            <% } %>
+          </tr>
+            <% if (result[0].name !== null) { %>
+              <% for(let key of result){ %>
+                <% let voteid1 = key.voteid; %>
+                <tr>
+                  <td><h6><%= key.name %></h6><button type="button" class="btn btn-sm btn-outline-info">Edit</button></td>
+                  <% for(let option of result){ %>
+                    <% let voteid2 = option.voteid; %>
+                    <% console.log(`id1 = ${voteid1}, id2 = ${voteid2}`) %>
+                    <% if (voteid1 === voteid2) { %>
+                      <td>✅</td>
+                      <% } else { %>
+                      <td></td>
                     <% } %>
-                  </tr>
-                <% } %>
+                  <% } %>
+                </tr>
               <% } %>
-
+            <% } %>
                 
                 
                   
@@ -96,9 +92,6 @@
     </div>
 
 
-          <button type="button" class="btn btn-refresh btn-lg" value="submit">Refresh</button>
-
-        </div>
     </section>
     <footer></footer>
   </body>
