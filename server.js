@@ -53,6 +53,50 @@ function generateRandomString() {
   return randomize;
 }
 
+const reformatVotes = (votesArr, cb) => {
+
+  const outputObj = {};
+
+  for (const voteObj of votesArr ) {
+    outputObj[(cb(voteObj))] = outputObj[(cb(voteObj))] || [];
+    outputObj[(cb(voteObj))].push(voteObj)
+  }
+
+  return outputObj;
+
+}
+
+
+const addTimeslots = (votesObj, cb) => {
+
+  votesObj.timeslots = [];
+
+  for (const name in votesObj) {
+    for (const voteObj of votesObj[name]) {
+      const timeslot = cb(voteObj);
+      
+      if (!votesObj.timeslots.includes(timeslot) && timeslot) {
+        votesObj.timeslots.push(timeslot) 
+      }
+    }
+  }
+}
+
+const addTimesSlotIds = (votesObj, cb) => {
+
+  votesObj.timeslotIds = [];
+
+  for (const name in votesObj) {
+    for (const voteObj of votesObj[name]) {
+      const timeslot = cb(voteObj);
+      
+      if (!votesObj.timeslotIds.includes(timeslot) && timeslot) {
+        votesObj.timeslotIds.push(timeslot) 
+      }
+    }
+  }
+}
+
 // Home page - redirects (create button) to /events/new
 app.get("/", (req, res) => {
   res.render("index");
@@ -117,11 +161,16 @@ app.get("/events/:shareURL", (req, res) => {
   .then(result => {
     console.log(result)
 
+    const votesObj = reformatVotes(result, voteObj => voteObj.name)
+    addTimeslots(votesObj, voteObj => voteObj.timeslot)
+    addTimesSlotIds(votesObj, voteObj => voteObj.timeslotId)
+    console.log(votesObj)
+
     const templateVars = {
       shareURL: req.params.shareURL,
       eventTitle: result[0].title,
       eventDescription: result[0].description,
-      result: result
+      result: votesObj
     };
 
     console.log(`THIS IS SHARE URL ${req.params.shareURL}`);
