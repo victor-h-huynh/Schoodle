@@ -102,6 +102,7 @@ app.post("/events/new", (req, res) => {
 });
 
 
+
 // Event form - enter event info & timeslots
 app.get("/events/:shareURL", (req, res) => {
 
@@ -129,6 +130,7 @@ app.get("/events/:shareURL", (req, res) => {
     res.render("events_results", templateVars);
 
   })
+
 
 });
 

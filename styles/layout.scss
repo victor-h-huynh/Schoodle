@@ -4,8 +4,10 @@ body {
 body h1 {
   color: #244751;
 }
+
 h5 {
   display: flex;
+
 }
 .nav {
   background: linear-gradient(to left, #acb6e5, #86fde8);
@@ -81,6 +83,7 @@ header img {
   // border: solid black 2px;
   margin: 25px;
 }
+
 #table {
   margin: auto;
 }
@@ -91,6 +94,8 @@ header img {
 }
 .btn-success2 {
   position: absolute;
+
+
 }
 .container {
   height: 90vh;
@@ -158,6 +163,8 @@ header img {
 .cell-9 {
   background: maroon;
 }
+
+
 #inlineCheckbox1 {
   display: flex;
   justify-content: center;
@@ -165,12 +172,14 @@ header img {
   height: 3rem;
   font-size: 50%;
 }
+
 #table {
   position: relative;
   width: 5rem;
   margin-left: 10rem;
 }
 .table-height {
+
   font-size: 14px;
   display: flex;
   justify-content: flex-start;
@@ -191,4 +200,5 @@ header img {
 #myInput {
   padding: 10px;
   margin: 2em;
+
 }
