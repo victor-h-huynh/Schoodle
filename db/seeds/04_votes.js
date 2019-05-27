@@ -9,7 +9,8 @@ exports.seed = function(knex, Promise) {
         knex('votes').insert({id: 3, user_id: '2', timeslot_id: '2'}),
         knex('votes').insert({id: 4, user_id: '2', timeslot_id: '3'}),
         knex('votes').insert({id: 5, user_id: '3', timeslot_id: '1'}),
-        knex('votes').insert({id: 6, user_id: '3', timeslot_id: '3'})
+        knex('votes').insert({id: 6, user_id: '3', timeslot_id: '3'}),
+        knex('votes').insert({id: 7, user_id: '3', timeslot_id: '4'})
       ]);
     });
 };
